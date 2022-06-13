@@ -1,0 +1,34 @@
+Potrebno je napraviti web aplikaciju za Informativni portal. Sadržaj Informativnog
+portala su novosti. Web aplikacija Informativni portal treba da ima:
+1. Dvije korisničke uloge: admin i user.
+- admin : upravlja korisnicima i novostima
+● može dodati nove korisnike,
+● mijenjati podatke za već unesene korisnikei
+● stavljati korisnike u neaktivni status (umjesto brisanja).
+● može dodavati novosti,
+● mijenjati već postojeće novosti i brisati novosti.
+● ima pristup postavljenim komentarima na novosti koje su postavili korisnici
+sa ulogom user, te ih moze po potrebi ukloniti (npr.ako su neprimjerenog
+sadrzaja).
+
+- user:
+ može se samostalno registrirati
+ može pregledati novosti
+ može postavljati (dodavati) komentare na već objavljene novosti
+Samo korisnici koji imaju status aktivan mogu se prijaviti na sistem.
+Ostali korisnici koji nisu registrirani su gosti (posjetioci) i mogu samo pregledati puni
+sadržaj novosti i postavljene komentare na pojedine novosti. Da bi mogao postavljati
+komentare na objavljene novosti mora se registrirarti i dobiti ulogu user.
+
+2. Stranice za login i registraciju
+Preko login stranice na web aplikaciju se mogu prijaviti svi registrovani korisnici koje
+je u sistem unio korisnik sa ulogom admin ili korisnik sa ulogom user koji se sam
+registrirao. Na stranici za login osim forme za prijavu, treba da stoji link za stranicu
+za registraciju preko koje se posjetilac (gost) moze registrirati. Samostalnom
+registracijom korisnik dobija korisničku ulogu user.
+Nakon uspješno izvršene prijave korisnika, u zavisnosti od njegove korisničke uloge
+(admin ili user) sistem treba da ponudi odgovarajuće opcije za njegov daljni rad
+(navedene pod 1. ovog zadaka)
+
+3. Glavna (pocetna) stranica sa sažetkom svih novosti, te opciju detaljnog pregleda
+svake novosti sa postavljenim komentarima.
