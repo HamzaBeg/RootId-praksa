@@ -1,0 +1,44 @@
+@startuml
+!theme amiga
+left to right direction
+skinparam packageStyle rect
+
+
+actor Admin as A
+actor  User as U
+
+
+rectangle NewsApp { 
+
+ usecase "Login on site" as login 
+ usecase "Registration" as regi 
+ usecase "Get News" as get 
+ usecase "Add News" as add
+ usecase "Update News" as update
+ usecase "Search News" as search
+ usecase "Delete News" as delete
+ usecase "Add User" as addU
+ usecase "Update User" as updateU
+ usecase "Delete User" as deletU
+ usecase "Get User" as getU
+ usecase "Get News By Id" as getNewsId
+
+ A--login
+ U--login
+ U--regi
+ U--get
+ A--get
+ A--update
+ U--search
+ A--delete
+ A--addU
+ A--updateU
+ A--deletU
+ A--getU
+ A--add
+  getNewsId.> get: extends
+
+ U <|- A
+}
+
+@enduml

@@ -1,0 +1,30 @@
+@startuml
+start
+:open home page; 
+:getNews; 
+:login On Site;
+if(verification?) then (no)
+:registration;
+  if(checkdata?) then (false)
+  :error check your data;
+  else (true)
+  endif
+else (yes)
+endIf
+ if(user is admin?) then (false)
+  :logged as User;
+  :get News;
+  :search News;
+  else (true)
+  :logged as Admin;
+  :get News;
+  :update News;
+  :delete News;
+  :get Users;
+  :update Users;
+  :delete Users;
+  endif
+  :logout;
+  :close site;
+stop
+@enduml
