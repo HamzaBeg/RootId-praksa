@@ -1,0 +1,31 @@
+@startuml
+!theme amiga
+left to right direction
+skinparam packageStyle rect
+
+
+actor  User as U
+
+
+rectangle System { 
+
+ usecase "Login" as login 
+ usecase "Registration" as regi 
+ usecase "Logout" as lout 
+ usecase "Reset password" as forget 
+ usecase "Update email" as email 
+ usecase "Delete account" as delete 
+ usecase "Change data of account" as change 
+ 
+
+ U--login
+ U--regi
+ U--lout
+ U--forget
+ U--email
+ U--delete
+ U--change
+
+}
+
+@enduml

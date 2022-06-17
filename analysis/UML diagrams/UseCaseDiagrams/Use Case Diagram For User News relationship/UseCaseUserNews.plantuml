@@ -1,0 +1,41 @@
+@startuml UseCase
+!theme amiga
+left to right direction
+skinparam packageStyle rect
+
+
+actor  User as U
+actor UserEditor as UE
+actor Admin as A
+actor  Guest as G
+
+
+rectangle System { 
+
+ usecase "Add News" as  addN
+ usecase "Delete News" as deleteN 
+ usecase "Update News" as updateN 
+ usecase "Get News" as getN
+ usecase "Search News" as searc
+ usecase "Approve Editor to add news" as appr
+ usecase "Rate news" as rate
+ usecase "Share news" as share
+
+ G--getN
+ U--share
+ U--rate
+ U--getN
+ U--searc
+ UE--getN
+ UE--updateN
+ UE-addN
+ UE--deleteN
+ A--appr
+
+  U<-A
+  U<-UE
+  U<-G
+ 
+}
+
+@enduml

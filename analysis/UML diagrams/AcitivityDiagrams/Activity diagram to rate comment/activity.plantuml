@@ -1,0 +1,19 @@
+
+@startuml Activity
+|User|
+start
+|User|
+:Rate comment (1-5);
+|System|
+repeat
+:Check rates of comments;
+repeat while(Comment rate < 2?) is(no)
+->yes;
+:Save comments with rate <2 to list;
+:Send admin list of comments for block;  
+|Admin|
+  :Check list;
+  #Red:Block comments]
+stop
+
+@enduml

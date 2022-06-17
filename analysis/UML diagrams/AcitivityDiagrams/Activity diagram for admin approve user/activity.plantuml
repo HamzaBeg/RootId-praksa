@@ -1,0 +1,26 @@
+
+@startuml Activity
+|User Editor|
+|System|
+|Admin|
+start
+|User Editor|
+:Enter Email;
+|System|
+if(:Email exist?) then(no)
+  end
+else (yes)
+repeat
+|User Editor|
+:Send request to add news;
+|System|
+:Notify admin;
+|Admin|
+:Respond to request;
+repeat while(Admin approved?) is(no)
+->yes;
+|User Editor|
+  #LightBlue:Add news]
+stop
+
+@enduml

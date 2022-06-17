@@ -1,0 +1,24 @@
+@startuml
+!theme amiga
+left to right direction
+skinparam packageStyle rect
+
+
+actor  Admin as A
+
+
+rectangle System { 
+
+ usecase "Add Users" as  addU
+ usecase "Delete Users" as deleteU 
+ usecase "Update Users" as updateU 
+ usecase "Get Users" as getU
+
+ A--addU
+ A--deleteU
+ A--updateU
+ A--getU
+  
+}
+
+@enduml

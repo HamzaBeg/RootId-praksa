@@ -1,0 +1,32 @@
+
+@startuml Activity<
+|User|
+start
+:Enter Email;
+|System|
+if(Email exist?) then(no)
+  end
+else (yes)
+
+repeat
+  |User|
+  :Solve the puzzle;
+  |System|
+  :Send confirmation code;
+  |User|
+  repeatwhile (User recieved code?) is (yes)
+  ->no;
+  repeat
+  :Enter confiramtion code;
+  |System|
+  repeatwhile (Confiramtion code correct?) is (yes)
+  ->no;
+  if(Confiramtion code has expired?) then(yes)
+  end
+  else (no)
+  :Enter new password;
+  #LightBlue:Update password]
+
+stop
+
+@enduml

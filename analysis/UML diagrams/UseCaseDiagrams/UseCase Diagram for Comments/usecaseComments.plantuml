@@ -1,0 +1,38 @@
+@startuml UseCase
+!theme amiga
+left to right direction
+skinparam packageStyle rect
+
+actor Admin as A
+actor User as U
+actor UserEditor as UE
+actor Guest as G
+
+
+rectangle System { 
+
+ usecase "Add Comment on news" as  addC
+ usecase "Update Comment on news" as  updateC
+ usecase "Delete Comment on news" as deleteCom
+ usecase "Block Comment on news" as  BlockCom
+ usecase "Rate Comment on news" as  rateCom
+ usecase "Approve UserEditor to block comment" as  approveBl
+ usecase "Get comments" as  getCom
+
+U--addC
+U--updateC
+U--deleteCom
+U--rateCom
+UE--BlockCom
+UE--updateC
+UE--deleteCom
+A--approveBl
+G--getCom
+
+  U<-G
+  U<-A
+  U<-UE
+
+}
+
+@enduml
