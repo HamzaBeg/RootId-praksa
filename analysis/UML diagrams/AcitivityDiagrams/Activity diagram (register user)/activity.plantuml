@@ -1,0 +1,18 @@
+
+@startuml Activity
+|User|
+start
+repeat
+|User|
+repeat
+:Enter data for sign up;
+
+|System|
+repeat while(Check email already exist?) is (true)
+->false;
+repeat while(Required field filled?) is (no)
+->yes;
+:Registration completed;
+  #LightBlue:Give user default role (User)]
+stop
+@enduml

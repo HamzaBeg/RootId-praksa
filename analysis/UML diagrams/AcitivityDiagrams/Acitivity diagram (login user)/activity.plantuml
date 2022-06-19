@@ -1,0 +1,25 @@
+
+@startuml Activity
+|User|
+start
+if(Login as guest?) then(no)
+repeat
+:Enter email and password;
+|System|
+repeat while(Verify user?) is (no)
+->yes;
+repeat
+:Send confirmation code;
+|User|
+  repeatwhile (Confirmation code correct?) is (no)
+  ->yes;
+  if(Confirmation code has expired?) then(yes)
+  end
+  else (no)
+ :Logged as User;
+  endif
+  else (yes)
+  :Logged as Guest;
+  endif
+stop
+@enduml

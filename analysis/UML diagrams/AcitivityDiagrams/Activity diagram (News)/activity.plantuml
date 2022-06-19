@@ -7,7 +7,7 @@ start
 |User Editor|
 :Enter Email;
 |System|
-if(:Email exist?) then(no)
+if(Email exist?) then(no)
   end
 else (yes)
 repeat

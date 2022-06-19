@@ -28,6 +28,7 @@ UE--updateC
 UE--deleteCom
 A--approveBl
 G--getCom
+A--BlockCom
 
   U<-G
   U<-A

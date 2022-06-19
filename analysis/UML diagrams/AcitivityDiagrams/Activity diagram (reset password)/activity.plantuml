@@ -14,13 +14,13 @@ repeat
   |System|
   :Send confirmation code;
   |User|
-  repeatwhile (User recieved code?) is (yes)
-  ->no;
+  repeatwhile (User recieved code?) is (no)
+  ->yes;
   repeat
   :Enter confiramtion code;
   |System|
-  repeatwhile (Confiramtion code correct?) is (yes)
-  ->no;
+  repeatwhile (Confiramtion code correct?) is (no)
+  ->yes;
   if(Confiramtion code has expired?) then(yes)
   end
   else (no)

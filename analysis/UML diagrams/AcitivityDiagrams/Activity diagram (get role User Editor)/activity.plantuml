@@ -1,0 +1,38 @@
+
+@startuml Activity
+|User|
+start
+:Enter Email;
+|System|
+if(Email exist?) then(no)
+  end
+else (yes)
+
+repeat
+  |User|
+  :Send request to Admin;
+  |System|
+  :Notify Admin;
+  |Admin|
+  repeatwhile (Admin recieved request?) is (no)
+  ->yes;
+  if(Admin added User as editor?) then(no)
+  end
+  else (yes)
+  |System|
+  :Notify User;
+  |User|
+  :Login again as User Editor;
+  fork
+  #LightBlue:Add news]
+  fork again
+  #LightBlue:Delete news]
+  fork again
+  #LightBlue:Get news]
+  fork again
+  #LightBlue:Block comments]
+ end fork
+
+stop
+
+@enduml
