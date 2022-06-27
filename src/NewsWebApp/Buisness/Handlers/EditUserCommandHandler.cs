@@ -31,22 +31,13 @@ namespace NewsWebApp.Buisness.Handlers
             }
             else
             {
-                user.Email = commandEdit.Email;
-                user.Ime = commandEdit.Ime;
-                user.Prezime = commandEdit.Prezime;
-                user.Status = commandEdit.Status;
-                user.Role = commandEdit.Role;
-                if (commandEdit.Status == Status.Active)
-                {
-                    commandEdit.IsActivate = true;
-                    user.IsActivate = commandEdit.IsActivate;
-                }
-                else
-                {
-                    commandEdit.IsActivate = false;
-                    user.IsActivate = commandEdit.IsActivate;
-                }
 
+                user.IsActivate = commandEdit.IsActivate;
+
+                if (user.IsActivate)
+                    user.Status = Status.Active;
+                else
+                    user.Status = Status.NotActive;
                 await _userRepository.UpdateUser(user,cancellationToken);
                 return message1;
             }

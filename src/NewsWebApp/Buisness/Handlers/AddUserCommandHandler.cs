@@ -22,7 +22,7 @@ namespace NewsWebApp.Buisness.Handlers
 
         public async Task<string> Handle(AddUser.CommandAdd command1, CancellationToken cancellationToken)
         {
-            string message1 = "You have successfully registered!";
+            string message1 = "You have successfully added user!";
             string message2 = "User already exist!";
             if (await _authenticatiRepository.UserExists(command1.Email, cancellationToken) == true)
             {

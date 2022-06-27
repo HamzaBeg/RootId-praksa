@@ -11,13 +11,13 @@ namespace NewsWebApp.Buisness.Commands
     {
         public class CommandEdit : IRequest<string>
         {
+            public CommandEdit(int id, bool isActivate)
+            {
+                Id = id;
+                IsActivate = isActivate;
+            }
             public int Id { get; set; }
             
-            public string Email { get; set; }
-            public string Ime { get; set; }
-            public string Prezime { get; set; }
-            public Role Role { get; set; }
-            public Status Status { get; set; }
             public bool IsActivate { get; set; }
 
 
