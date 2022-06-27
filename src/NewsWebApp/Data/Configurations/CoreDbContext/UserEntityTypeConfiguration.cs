@@ -13,7 +13,7 @@ namespace NewsWebApp.Data.Configurations.CoreDbContext
             builder.HasMany(e => e.News)
                 .WithOne(e => e.User);
 
-            builder.Property(x => x.UserId).IsRequired().ValueGeneratedOnAdd().UseIdentityColumn(); ;
+            builder.Property(x => x.Id).IsRequired().ValueGeneratedOnAdd().UseIdentityColumn(); ;
             builder.Property(x => x.Email).IsRequired();
             builder.Property(x => x.Ime).IsRequired();
             builder.Property(x => x.Prezime).IsRequired();
@@ -25,7 +25,7 @@ namespace NewsWebApp.Data.Configurations.CoreDbContext
             builder.HasData(
                 new User
                 {
-                    UserId = 1,
+                    Id = 1,
                     Email = "bradpit@s",
                     Password = "pit123",
                     Ime = "Brad",
@@ -33,7 +33,7 @@ namespace NewsWebApp.Data.Configurations.CoreDbContext
                 },
                 new User
                 {
-                    UserId = 2,
+                    Id = 2,
                     Email = "hamzabeg@t",
                     Password = "hamza123",
                     Ime = "Hamza",

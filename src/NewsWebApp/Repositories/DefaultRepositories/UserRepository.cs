@@ -45,7 +45,7 @@ namespace NewsWebApp.Repositories
         }
         public async Task<User> FindUser(int Id, CancellationToken cancellationToken)
         {
-            var user = await _coreDbContext.User.FirstOrDefaultAsync(x=>x.UserId == Id,cancellationToken);
+            var user = await _coreDbContext.User.FirstOrDefaultAsync(x=>x.Id == Id,cancellationToken);
            
             return user;
         }

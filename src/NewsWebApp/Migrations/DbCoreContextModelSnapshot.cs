@@ -21,7 +21,7 @@ namespace NewsWebApp.Migrations
 
             modelBuilder.Entity("NewsWebApp.Models.News", b =>
                 {
-                    b.Property<int>("NewId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:IdentityIncrement", 1)
@@ -33,9 +33,7 @@ namespace NewsWebApp.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("Date")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2")
-                        .HasDefaultValueSql("getdate()");
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -48,7 +46,7 @@ namespace NewsWebApp.Migrations
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
-                    b.HasKey("NewId");
+                    b.HasKey("Id");
 
                     b.HasIndex("UserId");
 
@@ -57,27 +55,27 @@ namespace NewsWebApp.Migrations
                     b.HasData(
                         new
                         {
-                            NewId = 1,
+                            Id = 1,
                             Content = "I learn .Net core",
-                            Date = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2022, 6, 27, 13, 0, 8, 516, DateTimeKind.Utc).AddTicks(5455),
                             Description = "Student of Politehnicki fakultet in Zenica",
                             Title = "I am Hamza",
                             UserId = 1
                         },
                         new
                         {
-                            NewId = 2,
+                            Id = 2,
                             Content = "I will also try to learn Angular",
-                            Date = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Date = new DateTime(2022, 6, 27, 13, 0, 8, 516, DateTimeKind.Utc).AddTicks(8168),
                             Description = "With great story",
                             Title = "I am junior developer",
-                            UserId = 1
+                            UserId = 2
                         });
                 });
 
             modelBuilder.Entity("NewsWebApp.Models.User", b =>
                 {
-                    b.Property<int>("UserId")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:IdentityIncrement", 1)
@@ -115,14 +113,14 @@ namespace NewsWebApp.Migrations
                         .HasColumnType("int")
                         .HasDefaultValue(1);
 
-                    b.HasKey("UserId");
+                    b.HasKey("Id");
 
                     b.ToTable("User");
 
                     b.HasData(
                         new
                         {
-                            UserId = 1,
+                            Id = 1,
                             Email = "bradpit@s",
                             Ime = "Brad",
                             IsActivate = false,
@@ -133,7 +131,7 @@ namespace NewsWebApp.Migrations
                         },
                         new
                         {
-                            UserId = 2,
+                            Id = 2,
                             Email = "hamzabeg@t",
                             Ime = "Hamza",
                             IsActivate = false,
