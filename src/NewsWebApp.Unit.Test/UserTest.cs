@@ -5,6 +5,7 @@ using NewsWebApp.Buisness.Queries;
 using NewsWebApp.ViewModels;
 using System.Threading.Tasks;
 using NewsWebApp.Buisness.Commands;
+using NewsWebApp.Enumerations;
 using NewsWebApp.Models;
 using NewsWebApp.Unit.Test.Fixtures;
 using Xunit;
@@ -36,7 +37,7 @@ namespace NewsWebApp.Unit.Test
             result.Should().BeEquivalentTo(expectedGameStatusForPlayer);
         }
         [Fact]
-        public async Task AddUser_Should_Add_User_And_Send_Message()
+        public async Task AddUser_Should_Add_User()
         {
             string email = "esma.beganovic@gmail.com";
             string ime = "Esma";
@@ -45,35 +46,41 @@ namespace NewsWebApp.Unit.Test
            
             var command = new AddUser.CommandAdd(email,ime,prezime,password);
             //Act
-            var expectedResult1 = "You have successfully added user!";
-            var expectedResult2 = "User already exist!";
-            var result = await _fixture.Mediator.Send(command);
+            User user = await _fixture.DbContext.User.FirstOrDefaultAsync(u=>u.Email==email);
             //Assert
-            if(result == expectedResult1)
-            {
-                result.Should().BeEquivalentTo(expectedResult1);
-            }
-            result.Should().BeEquivalentTo(expectedResult2);
+            user.Ime.Should().BeEquivalentTo(ime);
+            user.Prezime.Should().BeEquivalentTo(prezime);
+            user.Password.Should().BeEquivalentTo(password);
+            user.Role.Should().Be(Role.User);
+            user.IsActivate.Should().BeFalse();
+            user.Status.Should().Be(Status.NotActive);
+
         }
 
         [Fact]
-        public async Task Update_Game_Status_Should_Update_Or_Return_Message()
+        public async Task Update_User_Status_Should_Update_Status_In_True()
         {
             int Id = 1;
             bool isActivate = true;
 
             var command = new EditUser.CommandEdit(Id,isActivate);
             //Act
-            var expectedResult1 = "You have successfully updated user!";
-            var expectedResult2 = "User already exist!";
-            var result = await _fixture.Mediator.Send(command);
+            User user = await _fixture.DbContext.User.FirstOrDefaultAsync(u => u.Id == Id);
             //Assert
-            if (result == expectedResult1)
-            {
-                result.Should().BeEquivalentTo(expectedResult1);
-            }
-            else
-            result.Should().BeEquivalentTo(expectedResult2);
+            user.IsActivate.Should().BeTrue();
+        
+        }
+
+        [Fact]
+        public async Task Delete_User_Should_Delete_User_And_Send_Message()
+        {
+            int id = 3;
+
+            var command = new DeleteUser.CommandDelete(id);
+            //Act
+            User user = await _fixture.DbContext.User.FirstOrDefaultAsync(u => u.Id == id);
+            //Assert
+            user.Should().BeNull();
         }
     }
 }
