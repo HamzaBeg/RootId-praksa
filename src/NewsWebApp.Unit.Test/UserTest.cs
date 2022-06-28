@@ -28,13 +28,13 @@ namespace NewsWebApp.Unit.Test
             var query = new GetAllUsers.Query();
             //Act
 
-            var expectedGameStatusForPlayer = await _fixture.DbContext.User.AsNoTracking()
+            var expectedResult = await _fixture.DbContext.User.AsNoTracking()
                 .ProjectTo<LoginViewModel>(_fixture.Mapper.ConfigurationProvider)
                 .ToListAsync();
             var result = await _fixture.Mediator.Send(query);
 
             //Assert
-            result.Should().BeEquivalentTo(expectedGameStatusForPlayer);
+            result.Should().BeEquivalentTo(expectedResult);
         }
         [Fact]
         public async Task AddUser_Should_Add_User()
